@@ -9,5 +9,6 @@
     <string name="search">Search</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="enter_text">Enter artwork name</string>
+    <string name="title_activity_painting">PaintingActivity</string>
 
 </resources>

@@ -26,6 +26,10 @@
             android:name="com.example.mintmuseum.SearchActivity"
             android:label="@string/title_activity_search" >
         </activity>
+        <activity
+            android:name="com.example.mintmuseum.PaintingActivity"
+            android:label="@string/title_activity_painting" >
+        </activity>
     </application>
 
 </manifest>
