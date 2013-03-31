@@ -1,20 +1,21 @@
 package com.example.mintmuseum;
 
+import android.app.TabActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.app.Activity;
 import android.view.Menu;
-import android.content.Intent;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 
-public class PaintingActivity extends Activity {
+public class PaintingActivity extends TabActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_painting);
-		ImageView painting = (ImageView) findViewById(R.id.painting);
-		Intent intent = getIntent();
-		String name = intent.getStringExtra("name");
+		
+		TabHost tabHost = getTabHost();
+		
+		TabSpec paintingSpec = tabHost.newTabSpec("Painting");
 		
 	}
 

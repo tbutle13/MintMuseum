@@ -10,41 +10,67 @@ package com.example.mintmuseum;
 public final class R {
     public static final class attr {
     }
+    public static final class dimen {
+        /**  Default screen margins, per the Android Design guidelines. 
+
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
+    
+         */
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
+    }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
         public static final int logo=0x7f020001;
     }
     public static final class id {
-        public static final int join=0x7f070000;
-        public static final int logo=0x7f070003;
-        public static final int menu_settings=0x7f070008;
-        public static final int painting=0x7f070004;
-        public static final int scan=0x7f070001;
-        public static final int search=0x7f070002;
-        public static final int search_activity=0x7f070005;
-        public static final int search_bar=0x7f070006;
-        public static final int search_btn=0x7f070007;
+        public static final int action_settings=0x7f09000c;
+        public static final int banner=0x7f090008;
+        public static final int join=0x7f090000;
+        public static final int logo=0x7f090003;
+        public static final int menu_settings=0x7f09000a;
+        public static final int results_list=0x7f090009;
+        public static final int scan=0x7f090001;
+        public static final int search=0x7f090002;
+        public static final int search_b=0x7f090007;
+        public static final int search_bar2=0x7f09000b;
+        public static final int tab1=0x7f090004;
+        public static final int tab2=0x7f090005;
+        public static final int tab3=0x7f090006;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_painting=0x7f030001;
         public static final int activity_search=0x7f030002;
+        public static final int activity_show_info=0x7f030003;
+        public static final int activity_show_paiting=0x7f030004;
     }
     public static final class menu {
-        public static final int activity_main=0x7f060000;
-        public static final int activity_painting=0x7f060001;
-        public static final int activity_search=0x7f060002;
+        public static final int activity_main=0x7f080000;
+        public static final int activity_painting=0x7f080001;
+        public static final int activity_search=0x7f080002;
+        public static final int search=0x7f080003;
+        public static final int show_info=0x7f080004;
+        public static final int show_paiting=0x7f080005;
     }
     public static final class string {
-        public static final int app_name=0x7f040000;
-        public static final int enter_text=0x7f040007;
-        public static final int hello_world=0x7f040001;
-        public static final int join=0x7f040003;
-        public static final int menu_settings=0x7f040002;
-        public static final int scan=0x7f040004;
-        public static final int search=0x7f040005;
-        public static final int title_activity_painting=0x7f040008;
-        public static final int title_activity_search=0x7f040006;
+        public static final int action_settings=0x7f06000b;
+        public static final int app_label=0x7f06000a;
+        public static final int app_name=0x7f060000;
+        public static final int banner_string=0x7f06000c;
+        public static final int enter_text=0x7f060007;
+        public static final int hello_world=0x7f060001;
+        public static final int join=0x7f060003;
+        public static final int menu_settings=0x7f060002;
+        public static final int scan=0x7f060004;
+        public static final int search=0x7f060005;
+        public static final int search_hint=0x7f060009;
+        public static final int settings_description=0x7f06000d;
+        public static final int title_activity_painting=0x7f060008;
+        public static final int title_activity_search=0x7f060006;
+        public static final int title_activity_show_info=0x7f06000f;
+        public static final int title_activity_show_paiting=0x7f06000e;
     }
     public static final class style {
         /** 
@@ -68,10 +94,13 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f050000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f050001;
+        public static final int AppTheme=0x7f070001;
+    }
+    public static final class xml {
+        public static final int searchable=0x7f040000;
     }
 }
