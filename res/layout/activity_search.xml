@@ -23,4 +23,14 @@
         android:layout_alignLeft="@+id/banner"
         android:layout_below="@+id/banner" >
     </ListView>
+
+    <Button
+        android:id="@+id/button_search"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/banner"
+        android:text="@string/search" />
+
 </RelativeLayout>

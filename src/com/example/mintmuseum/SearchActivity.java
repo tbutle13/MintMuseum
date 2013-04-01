@@ -10,14 +10,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
-public class SearchActivity extends Activity implements OnQueryTextListener {
+public class SearchActivity extends Activity implements OnQueryTextListener, OnClickListener, OnItemClickListener{
 
 	private TextView mTextView;
 	private ListView mListView;
@@ -29,6 +31,9 @@ public class SearchActivity extends Activity implements OnQueryTextListener {
 		
 		mTextView = (TextView) findViewById(R.id.banner);
 		mListView = (ListView) findViewById(R.id.results_list);
+		Button tempBtn = (Button) findViewById(R.id.button_search);
+		tempBtn.setOnClickListener(this);
+		mListView.setOnItemClickListener(this);
 		handleIntent(getIntent());
 			
 	}
@@ -75,25 +80,14 @@ public class SearchActivity extends Activity implements OnQueryTextListener {
 		ArrayAdapter<String> aa = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line, str);
 		mListView.setAdapter(aa);
 		
-		mListView.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				// TODO Auto-generated method stub
-				
-			}
-
-            }
-        });
-		
+			
 	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()){
 			case R.id.search_bar2:
 				onSearchRequested();
-				Log.v("Search", "TEst");
+				Log.v("Search", "made bar");
 				return true;
 			default:
 				return false;
@@ -112,5 +106,24 @@ public class SearchActivity extends Activity implements OnQueryTextListener {
 		Log.v("query", "onQueryTextSubmit");
 		return false;
 	}
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		if (v.getId() == R.id.button_search) {
+			showResults("lol");
+		}
+		if (v.getId() == R.id.results_list) {
+			Log.w("test", "test");
+		}
+	}
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		// TODO Auto-generated method stub
+		Log.v("lols", "lols");
+		startActivity(new Intent(this, PaintingActivity.class));
+		
+	}
+	
+	
 
 }

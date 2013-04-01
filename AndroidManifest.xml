@@ -43,6 +43,14 @@
             android:name="com.example.mintmuseum.ShowInfoActivity"
             android:label="@string/title_activity_show_info" >
         </activity>
+        <activity
+            android:name="com.example.mintmuseum.ClassActivity"
+            android:label="@string/title_activity_class" >
+        </activity>
+        <activity
+            android:name="com.example.mintmuseum.GroupActivity"
+            android:label="@string/title_activity_group" >
+        </activity>
     </application>
 
 </manifest>
