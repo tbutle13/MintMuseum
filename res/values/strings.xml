@@ -7,5 +7,15 @@
     <string name="join">Join Class</string>
     <string name="scan">Scan</string>
     <string name="search">Search</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="enter_text">Enter artwork name</string>
+    <string name="title_activity_painting">PaintingActivity</string>
+    <string name="search_hint">Enter artwork or artist name</string>
+    <string name="app_label">Test</string>
+    <string name="action_settings">Settings</string>
+    <string name="banner_string">Select Artwork</string>
+    <string name="settings_description">Artwork</string>
+    <string name="title_activity_show_paiting">ShowPaitingActivity</string>
+    <string name="title_activity_show_info">ShowInfoActivity</string>
 
 </resources>
