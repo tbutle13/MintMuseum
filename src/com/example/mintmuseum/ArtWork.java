@@ -1,13 +1,31 @@
 package com.example.mintmuseum;
 
-import android.provider.BaseColumns;
-
-public class ArtWork implements BaseColumns {
-	public static final String TABLE_NAME = "artwork";
-	public static final String TABLE_NAME_ID = "art_id";
-	public static final String TABLE_NAME_TITLE = "art_title";
-	public static final String TABLE_NAME_ARTIST = "art_artist";
-	public static final String TABLE_NAME_DESCRIPTION = "art_description";
+public class ArtWork {
+	private String name;
+	private String artist;
+	private String id;
+	private String description;
 	
-	private ArtWork() {}
+	public ArtWork(){}
+	public ArtWork (String id, String name, String artist) {
+		this.id = id;
+		this.name = name;
+		this.artist = artist;
+	}
+	
+	public String getName() { return name; }
+	
+	public void setName(String name) { this.name = name; }
+	
+	public String getArtist() { return artist; }
+	
+	public void setArtist(String artist) { this.artist = artist; }
+	
+	public String getID() { return id; }
+	
+	public void setID(String id)  { this.id = id; }
+	
+	public String getDescription() { return this.description; }
+	
+	public void setDescriptiion(String description) { this.description = description; }
 }

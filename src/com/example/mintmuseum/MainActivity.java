@@ -1,12 +1,13 @@
 package com.example.mintmuseum;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.content.Intent;
 
 public class MainActivity extends Activity implements OnClickListener{
 	Button scan;
@@ -49,13 +50,21 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.scan:
 			// Do the QR Code scan intnet here
+			myIntent = new Intent("com.google.zxing.client.android.SCAN");
+			myIntent.putExtra("SCAN_MODE","QR_CODE_MODE");
+			startActivityForResult(myIntent, 0);
 			break;
 		case R.id.join:
-		
+			myIntent = new Intent();
+			startActivity(myIntent);
 			
 		}
 			
-		
+	}
+	
+	public void onActivityResult(int req, int resu, Intent intent) {
+		Log.w("LOL", "scan");
+		//startActivity(new Intent(this, PaintingActivity.class));
 	}
 
 }
