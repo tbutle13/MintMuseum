@@ -7,10 +7,11 @@ public class ArtWork {
 	private String description;
 	
 	public ArtWork(){}
-	public ArtWork (String id, String name, String artist) {
+	public ArtWork (String id, String name, String description, String artist) {
 		this.id = id;
 		this.name = name;
 		this.artist = artist;
+		this.description = description;
 	}
 	
 	public String getName() { return name; }

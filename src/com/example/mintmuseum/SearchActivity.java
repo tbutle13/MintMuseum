@@ -34,9 +34,9 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 		setContentView(R.layout.activity_search);
 		
 		DatabaseHelper dbHelper = new DatabaseHelper(this);
-		dbHelper.addArtwork(new ArtWork("12!@3", "test", "artist"));
-		dbHelper.addArtwork(new ArtWork("1034801234", "another help", "lols"));
-		dbHelper.addArtwork(new ArtWork("109283091283", "slkjdafl", "balls"));
+		dbHelper.addArtwork(new ArtWork("12!@3", "test", "artist", "test"));
+		dbHelper.addArtwork(new ArtWork("1034801234", "another help", "lols", "fart"));
+		dbHelper.addArtwork(new ArtWork("109283091283", "slkjdafl", "balls", "lolerskates"));
 		mTextView = (TextView) findViewById(R.id.banner);
 		mListView = (ListView) findViewById(R.id.results_list);
 		Button tempBtn = (Button) findViewById(R.id.button_search);
@@ -106,10 +106,9 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 				return false;
 		}	
 	}
-	
+	//Android function for 
 	@Override
 	public boolean onQueryTextChange(String newText) {
-		// TODO Auto-generated method stub
 		Log.v("query","onQueryTextChange");
 		mTextView.setText("Searching for " + newText);
 		return false;
@@ -118,7 +117,9 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 	@Override
 	public boolean onQueryTextSubmit(String query) {
 		// TODO Auto-generated method stub
-		Log.v("query", "onQueryTextSubmit");
+		Log.v("query", "submitted");
+		
+		
 		return false;
 	}
 	

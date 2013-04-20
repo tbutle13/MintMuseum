@@ -9,10 +9,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class MainActivity extends Activity implements OnClickListener{
-	Button scan;
-	Button search;
-	Button join;
+public class MainActivity extends Activity implements OnClickListener {
+
 	
 	
 	@Override
@@ -20,15 +18,14 @@ public class MainActivity extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		//Get the buttons
-		scan = (Button) findViewById(R.id.scan);
-		search = (Button) findViewById(R.id.search);
-		join = (Button) findViewById(R.id.join);
+		//Create Buttons
+		Button scan = (Button) findViewById(R.id.scan);
+		Button search = (Button) findViewById(R.id.search);
+		Button join = (Button) findViewById(R.id.join);
+		
 		scan.setOnClickListener(this);
 		search.setOnClickListener(this);
 		join.setOnClickListener(this);
-		
-		
 	}
 
 	@Override
