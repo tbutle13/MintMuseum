@@ -46,13 +46,13 @@ public class MainActivity extends Activity implements OnClickListener {
 			MainActivity.this.startActivity(myIntent);
 			break;
 		case R.id.scan:
-			// Do the QR Code scan intnet here
+			// Do the QR Code scan intent here
 			myIntent = new Intent("com.google.zxing.client.android.SCAN");
 			myIntent.putExtra("SCAN_MODE","QR_CODE_MODE");
 			startActivityForResult(myIntent, 0);
 			break;
 		case R.id.join:
-			myIntent = new Intent();
+			myIntent = new Intent(this, GroupActivity.class);
 			startActivity(myIntent);
 			
 		}

@@ -17,5 +17,6 @@
     <string name="settings_description">Artwork</string>
     <string name="title_activity_show_paiting">ShowPaitingActivity</string>
     <string name="title_activity_show_info">ShowInfoActivity</string>
+    <string name="title_activity_group">GroupActivity</string>
 
 </resources>

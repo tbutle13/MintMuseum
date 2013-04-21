@@ -17,7 +17,6 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
@@ -28,19 +27,24 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 	private TextView mTextView;
 	private ListView mListView;
 	private SearchView mSearchView;
+	private Intent mIntent;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 		
+		//Stuff for developing
+	
 		DatabaseHelper dbHelper = new DatabaseHelper(this);
-		dbHelper.addArtwork(new ArtWork("12!@3", "test", "artist", "test"));
+		dbHelper.addArtwork(new ArtWork("12!@3", "monalisa", "artist", "test"));
 		dbHelper.addArtwork(new ArtWork("1034801234", "another help", "lols", "fart"));
 		dbHelper.addArtwork(new ArtWork("109283091283", "slkjdafl", "balls", "lolerskates"));
+	
+		
 		mTextView = (TextView) findViewById(R.id.banner);
 		mListView = (ListView) findViewById(R.id.results_list);
-		Button tempBtn = (Button) findViewById(R.id.button_search);
-		tempBtn.setOnClickListener(this);
+	
 		mListView.setOnItemClickListener(this);
 		handleIntent(getIntent());
 		
@@ -119,7 +123,7 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 		// TODO Auto-generated method stub
 		Log.v("query", "submitted");
 		
-		
+		showResults(query);
 		return false;
 	}
 	
@@ -128,6 +132,8 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 		// TODO Auto-generated method stub
 	
 		if (v.getId() == R.id.results_list) {
+			mIntent = new Intent(this, PaintingActivity.class);
+			startActivity(mIntent);
 			Log.w("test", "test");
 		}
 	}
@@ -135,8 +141,11 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 	 * 
 	 */
 	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	public void onItemClick(AdapterView<?> arg0, View view, int arg2, long arg3) {
 		// TODO Auto-generated method stub
+		mIntent = new Intent(this, PaintingActivity.class);
+		mIntent.putExtra("name", ((TextView)view).getText().toString());
+		startActivity(mIntent);
 		Log.v("lols", "lols");
 		//startActivity(new Intent(this, PaintingActivity.class));
 		
