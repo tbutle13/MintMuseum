@@ -13,7 +13,7 @@ import android.view.Menu;
 
 public class PaintingActivity extends Activity{
 	Fragment mFragment;
-
+	Bundle bundle;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -23,11 +23,15 @@ public class PaintingActivity extends Activity{
 
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
+		bundle = new Bundle();
+		ArtWork mArt = (ArtWork) getIntent().getSerializableExtra("art");
+		bundle.putSerializable("artwork", mArt);
 		
 		Tab tab = actionBar.newTab();
 		tab.setText("painting");
 		TabListener<PaintingFragment> tl = new TabListener<PaintingFragment>(this,
 				"painting", PaintingFragment.class);
+		
 		tab.setTabListener(tl);
 		actionBar.addTab(tab);
 
@@ -73,9 +77,7 @@ public class PaintingActivity extends Activity{
 
 		public void onTabSelected(Tab tab, FragmentTransaction ft) {
 			// Check if the fragment is already initialized
-			Bundle bundle = new Bundle();
-			ArtWork mArt = (ArtWork) getIntent().getSerializableExtra("art");
-			bundle.putSerializable("artwork", mArt);
+
 					
 			if (mFragment == null) {
 				// If not, instantiate and add it to the activity

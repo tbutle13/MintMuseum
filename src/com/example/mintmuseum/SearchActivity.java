@@ -35,6 +35,7 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 	private SearchView mSearchView;
 	private Intent mIntent;
 	private DatabaseHelper dbHelper;
+	private List<String> artworks;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,8 +46,8 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 	
 		dbHelper = new DatabaseHelper(this);
 		dbHelper.addArtwork(new ArtWork("test", "test", "DaVinci", "A Cool painting", "painting"));
-		try {
-			dbHelper.updateDb("test", files);
+		/*try {
+			//dbHelper.updateDb("test", files);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,7 +57,7 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		mTextView = (TextView) findViewById(R.id.banner);
 		mListView = (ListView) findViewById(R.id.results_list);
@@ -106,7 +107,7 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 	public void showResults(String query) {
 		
 		dbHelper = new DatabaseHelper(this);
-		List<String> artworks = new ArrayList<String>();
+		artworks = new ArrayList<String>();
 		for(ArtWork art : dbHelper.getArtwork(query)) {
 			artworks.add(art.getName());
 		}
@@ -157,7 +158,7 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 	public void onItemClick(AdapterView<?> arg0, View view, int arg2, long arg3) {
 		mIntent = new Intent(this, PaintingActivity.class);
 		String name = ((TextView)view).getText().toString();
-		ArtWork mArt = (ArtWork) dbHelper.getArtwork(name);
+		ArtWork mArt = (ArtWork) dbHelper.getArtwork(name).get(0);
 		mIntent.putExtra("art", mArt);
 		startActivity(mIntent);
 		//Log.v("lols", "lols");

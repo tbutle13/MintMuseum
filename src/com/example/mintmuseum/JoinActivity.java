@@ -13,16 +13,19 @@ public class JoinActivity extends Activity implements OnClickListener {
 	WebParser wp;
 	Button mButton;
 	TextView mTextView;
-	
+	ArtWork art;
+	Group group;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_join);
-		Group group = (Group) getIntent().getSerializableExtra("group");
-		mButton = (Button) findViewById(R.id.join);
+		group = (Group) getIntent().getSerializableExtra("group");
+		mButton = (Button) findViewById(R.id.view_painting);
+		mButton.setOnClickListener(this);
 		mTextView = (TextView) findViewById(R.id.group_banner);
 		mTextView.setText("Welcome to " + group.getName());
+		//mButton.setOnClickListener(this);
 		
 		
 	}
@@ -43,9 +46,9 @@ public class JoinActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		Intent mIntent;
 		switch(view.getId()) {
-		case R.id.join:
+		case R.id.view_painting:
 			mIntent = new Intent(this, PaintingActivity.class);
-			mIntent.putExtra("name", mButton.getText());
+			mIntent.putExtra("art", group.getArt());
 			startActivity(mIntent);
 			break;
 		}
