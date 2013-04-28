@@ -27,9 +27,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String ART_KEY_DESCRIPTION = "description";
 	private static final String ART_KEY_TYPE = "type";
 	
-	private static final String ART_TABLE_CREATE = "CREATE TABLE " + TABLE_ART + " ("
-			+ KEY_ID + " INTEGER FINAL KEY, " + ART_KEY_NAME + " TEXT NOT NULL, " + ART_KEY_ARTIST + " TEXT NOT NULL, " +
-					ART_KEY_DESCRIPTION + " TEXT, " + ART_KEY_TYPE  +" TEXT );"; 
+	private static final String ART_TABLE_CREATE = "CREATE VIRTUAL TABLE " + TABLE_ART + " USING FTS3 ("
+			+ KEY_ID + ", " + ART_KEY_NAME + ", " + ART_KEY_ARTIST + ", " 
+			+ ART_KEY_DESCRIPTION  +  ", " + ART_KEY_TYPE + ");";
 	
 	
 	public DatabaseHelper(Context context) {
@@ -64,11 +64,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues cv = new ContentValues();
 		
+		cv.put(KEY_ID, art.getID());
 		cv.put(ART_KEY_NAME, art.getName());
 		cv.put(ART_KEY_ARTIST, art.getArtist());
 		cv.put(ART_KEY_DESCRIPTION, art.getDescription());
-		//cv.put(ART_KEY_TYPE, art.getType());
-		
+		cv.put(ART_KEY_TYPE, art.getType());
 		db.insert(TABLE_ART, null, cv);
 		db.close();
 		return true;
@@ -82,7 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public List<ArtWork> getArtwork(String name) {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_ART, new String[] { KEY_ID,
-				ART_KEY_NAME, ART_KEY_ARTIST, ART_KEY_DESCRIPTION}, ART_KEY_NAME + "=?",
+				ART_KEY_NAME, ART_KEY_ARTIST, ART_KEY_DESCRIPTION, ART_KEY_TYPE }, ART_KEY_NAME + " MATCH ?",
 				new String[]{ name }, null, null, null, null);
 		
 		List<ArtWork> artwork = new ArrayList<ArtWork>();
@@ -113,7 +113,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				artwork.setID(cursor.getString(0));
 				artwork.setName(cursor.getString(1));
 				artwork.setArtist(cursor.getString(2));
-				
+				artwork.setDescriptiion(cursor.getString(3));
+				artwork.setType(cursor.getString(4));
 				artList.add(artwork);
 			} while (cursor.moveToNext());
 		}
