@@ -133,8 +133,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		List<ArtWork> ls = ((WebParser) wp).getArt();
 		for (ArtWork art : ls) {
 			addArtwork(art);
-		}
-		
+		}	
 	}
-
 }
