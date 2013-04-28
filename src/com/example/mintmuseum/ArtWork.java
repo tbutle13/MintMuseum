@@ -1,6 +1,12 @@
 package com.example.mintmuseum;
 
-public class ArtWork {
+import java.io.Serializable;
+
+public class ArtWork implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 647734452800753456L;
 	private String name;
 	private String artist;
 	private String id;

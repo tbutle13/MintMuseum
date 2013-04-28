@@ -158,9 +158,7 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 		mIntent = new Intent(this, PaintingActivity.class);
 		String name = ((TextView)view).getText().toString();
 		ArtWork mArt = (ArtWork) dbHelper.getArtwork(name);
-		mIntent.putExtra("name", mArt.getName());
-		mIntent.putExtra("description", mArt.getDescription());
-		mIntent.putExtra("artist", mArt.getArtist());
+		mIntent.putExtra("art", mArt);
 		startActivity(mIntent);
 		//Log.v("lols", "lols");
 	

@@ -28,8 +28,9 @@ public class PaintingFragment extends Fragment {
 		
 		View v = inflator.inflate(R.layout.painting_frag, container, false);
 		mImView = (ImageView)v.findViewById(R.id.painting);
-		String name = getArguments().getString("artwork");		
-		mImView.setImageResource(getResources().getIdentifier(name, "drawable", "com.example.mintmuseum"));
+		ArtWork art = (ArtWork) getArguments().getSerializable("artowrk");
+		
+		mImView.setImageResource(getResources().getIdentifier(art.getID(), "drawable", "com.example.mintmuseum"));
 		
 		return v;
 		

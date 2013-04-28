@@ -24,9 +24,13 @@ import android.app.Activity;
 public class WebParser {
 	
 	private File file;
+	public WebParser() {}
+	
 	public WebParser(File file) {
 		this.file = file;
 	}
+	
+	public void setTempFile(File file) { this.file = file; }
 	
 	public String getTagValue(String name, Element e) {
 		NodeList nList = e.getElementsByTagName(name).item(0).getChildNodes();
@@ -87,7 +91,13 @@ public class WebParser {
 		
 	}
 	
-	public List<String> getClasses() {
-		return null;
+	public List<Group> getClasses() {
+		List<Group> groups = new ArrayList<Group>();
+		// TODO change to api call 
+		groups.add(new Group("test group", new ArtWork("test", "Mona Lisa", "cool", "more string", "this guy")));
+		
+		return groups;
 	}
+	
+	
 }

@@ -74,10 +74,9 @@ public class PaintingActivity extends Activity{
 		public void onTabSelected(Tab tab, FragmentTransaction ft) {
 			// Check if the fragment is already initialized
 			Bundle bundle = new Bundle();
-			bundle.putString("artwork", getIntent().getStringExtra("name"));
-			bundle.putString("artist", getIntent().getStringExtra("artist"));
-			bundle.putString("description", getIntent().getStringExtra("description"));
-			
+			ArtWork mArt = (ArtWork) getIntent().getSerializableExtra("art");
+			bundle.putSerializable("artwork", mArt);
+					
 			if (mFragment == null) {
 				// If not, instantiate and add it to the activity
 				

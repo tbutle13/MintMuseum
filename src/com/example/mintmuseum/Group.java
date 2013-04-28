@@ -1,6 +1,12 @@
 package com.example.mintmuseum;
 
-public class Group {
+import java.io.Serializable;
+
+public class Group implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1475013205810525502L;
 	private String name;
 	private ArtWork art;
 	

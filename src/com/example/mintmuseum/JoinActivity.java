@@ -7,17 +7,24 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class JoinActivity extends Activity implements OnClickListener {
 	WebParser wp;
 	Button mButton;
+	TextView mTextView;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_join);
-	
+		Group group = (Group) getIntent().getSerializableExtra("group");
 		mButton = (Button) findViewById(R.id.join);
+		mTextView = (TextView) findViewById(R.id.group_banner);
+		mTextView.setText("Welcome to " + group.getName());
+		
+		
 	}
 	
 	
@@ -39,6 +46,7 @@ public class JoinActivity extends Activity implements OnClickListener {
 		case R.id.join:
 			mIntent = new Intent(this, PaintingActivity.class);
 			mIntent.putExtra("name", mButton.getText());
+			startActivity(mIntent);
 			break;
 		}
 	}
