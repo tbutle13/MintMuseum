@@ -8,12 +8,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class InfoFragment extends Fragment {
-	
+	TextView mTextView;
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		TextView tv = (TextView) getActivity().findViewById(R.id.infoFrag);
-		tv.setText("Some info about the painting would go here, like compositional stuff and problem solving");
 	}
 	
 	@Override
@@ -23,8 +21,11 @@ public class InfoFragment extends Fragment {
 	
 	
 	public View onCreateView(LayoutInflater inflator, ViewGroup container, Bundle savedInstanceState) {
-		return inflator.inflate(R.layout.info_frag, container, false);
-		
+		View v = inflator.inflate(R.layout.info_frag, container, false);
+		mTextView = (TextView) v.findViewById(R.id.infoFrag);
+		String description = getArguments().getString("description");
+		mTextView.setText(description);
+		return v;
 	}
 
 }

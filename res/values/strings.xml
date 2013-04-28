@@ -18,5 +18,7 @@
     <string name="title_activity_show_paiting">ShowPaitingActivity</string>
     <string name="title_activity_show_info">ShowInfoActivity</string>
     <string name="title_activity_group">GroupActivity</string>
+    <string name="title_activity_join">JoinActivity</string>
+    <string name="title_activity_create">CreateActivity</string>
 
 </resources>

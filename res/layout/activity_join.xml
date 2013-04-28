@@ -6,31 +6,23 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".GroupActivity" >
+    tools:context=".JoinActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/group_banner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Classes" />
-    
-     <ListView
-         android:id="@+id/results_list"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_above="@+id/create"
-         android:layout_alignLeft="@+id/banner"
-         android:layout_below="@+id/textView1" />
+        android:layout_marginTop="14dp"
+        android:text="@string/hello_world" />
 
     <Button
-        android:id="@+id/create"
+        android:id="@+id/view_painting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/results_list"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/results_list"
-        android:text="Create Class" />
+        android:layout_centerHorizontal="true"
+        android:text="View Painting" />
 
 </RelativeLayout>

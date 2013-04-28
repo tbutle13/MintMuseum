@@ -19,7 +19,14 @@ import org.w3c.dom.NodeList;
 import org.w3c.tidy.Tidy;
 import org.xml.sax.SAXException;
 
+import android.app.Activity;
+
 public class WebParser {
+	
+	private File file;
+	public WebParser(File file) {
+		this.file = file;
+	}
 	
 	public String getTagValue(String name, Element e) {
 		NodeList nList = e.getElementsByTagName(name).item(0).getChildNodes();
@@ -36,19 +43,18 @@ public class WebParser {
 	 * @throws SAXException
 	 */
 	public Document getXML(String url) {
-		
-	
-		Document doc;
+			Document doc;
 		try {
-			URLConnection test = new URL(url).openConnection();
+			
+			URLConnection conn = new URL(url).openConnection();
 	
-			File tempFile = new File("temp");
+			File tempFile = new File(file, "temp");
 			FileWriter fw = new FileWriter(tempFile);
 		
 			//Use tidy to fix any xml problems and write xml to a file
 			Tidy tidy = new Tidy();
 			tidy.setXmlTags(true);
-			tidy.parse(test.getInputStream(), fw);
+			tidy.parse(conn.getInputStream(), fw);
 		
 			DocumentBuilder docBuild = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			doc = docBuild.parse(tempFile);
@@ -61,19 +67,27 @@ public class WebParser {
 	}
 	
 	public List<ArtWork> getArt() {	//Temp will change to real url
-		String url = "http://webpages.uncc.edu/~cburke16/test.xml";
-		NodeList nl = getXML(url).getElementsByTagName("Paintings");
-		List<ArtWork> arts = new ArrayList();
+		try{
+			String url = "http://webpages.uncc.edu/~cburke16/test.xml";
+			NodeList nl = getXML(url).getElementsByTagName("Paintings");
+			List<ArtWork> arts = new ArrayList<ArtWork>();
 		
-		for(int i = 0; i < nl.getLength(); i++) {
-			Node mNode = nl.item(i);
-			if(mNode.getNodeType() == Node.ELEMENT_NODE) {
-				Element elm = (Element) mNode;
-				arts.add(new ArtWork(getTagValue("Id", elm), getTagValue("Name", elm), getTagValue("Description", elm),getTagValue("Artist", elm)));
+			for(int i = 0; i < nl.getLength(); i++) {
+				Node mNode = nl.item(i);
+				if(mNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element elm = (Element) mNode;
+					arts.add(new ArtWork(getTagValue("Id", elm), getTagValue("Name", elm), getTagValue("Description", elm),getTagValue("Artist", elm), getTagValue("Type", elm)));
+				}
 			}
+			return arts;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
 		}
-		return arts;
+		
 	}
 	
-	
+	public List<String> getClasses() {
+		return null;
+	}
 }

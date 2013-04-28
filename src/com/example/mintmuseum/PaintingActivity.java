@@ -75,6 +75,9 @@ public class PaintingActivity extends Activity{
 			// Check if the fragment is already initialized
 			Bundle bundle = new Bundle();
 			bundle.putString("artwork", getIntent().getStringExtra("name"));
+			bundle.putString("artist", getIntent().getStringExtra("artist"));
+			bundle.putString("description", getIntent().getStringExtra("description"));
+			
 			if (mFragment == null) {
 				// If not, instantiate and add it to the activity
 				

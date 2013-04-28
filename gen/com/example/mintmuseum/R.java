@@ -27,37 +27,45 @@ public final class R {
         public static final int test=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000b;
-        public static final int banner=0x7f090005;
-        public static final int infoFrag=0x7f090007;
-        public static final int join=0x7f090000;
-        public static final int logo=0x7f090003;
-        public static final int menu_settings=0x7f090009;
-        public static final int painting=0x7f090008;
-        public static final int results_list=0x7f090006;
-        public static final int scan=0x7f090001;
-        public static final int search=0x7f090002;
-        public static final int search_b=0x7f090004;
-        public static final int search_bar2=0x7f09000a;
+        public static final int action_settings=0x7f09000f;
+        public static final int banner=0x7f090003;
+        public static final int create=0x7f090002;
+        public static final int group_banner=0x7f090004;
+        public static final int infoFrag=0x7f09000b;
+        public static final int join=0x7f090006;
+        public static final int logo=0x7f090009;
+        public static final int menu_settings=0x7f09000d;
+        public static final int painting=0x7f09000c;
+        public static final int results_list=0x7f090001;
+        public static final int scan=0x7f090007;
+        public static final int search=0x7f090008;
+        public static final int search_b=0x7f09000a;
+        public static final int search_bar2=0x7f09000e;
+        public static final int textView1=0x7f090000;
+        public static final int view_painting=0x7f090005;
     }
     public static final class layout {
-        public static final int activity_group=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int activity_painting=0x7f030002;
-        public static final int activity_search=0x7f030003;
-        public static final int activity_show_info=0x7f030004;
-        public static final int activity_show_paiting=0x7f030005;
-        public static final int info_frag=0x7f030006;
-        public static final int painting_frag=0x7f030007;
+        public static final int activity_create=0x7f030000;
+        public static final int activity_group=0x7f030001;
+        public static final int activity_join=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int activity_painting=0x7f030004;
+        public static final int activity_search=0x7f030005;
+        public static final int activity_show_info=0x7f030006;
+        public static final int activity_show_paiting=0x7f030007;
+        public static final int info_frag=0x7f030008;
+        public static final int painting_frag=0x7f030009;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
         public static final int activity_painting=0x7f080001;
         public static final int activity_search=0x7f080002;
-        public static final int group=0x7f080003;
-        public static final int search=0x7f080004;
-        public static final int show_info=0x7f080005;
-        public static final int show_paiting=0x7f080006;
+        public static final int create=0x7f080003;
+        public static final int group=0x7f080004;
+        public static final int join=0x7f080005;
+        public static final int search=0x7f080006;
+        public static final int show_info=0x7f080007;
+        public static final int show_paiting=0x7f080008;
     }
     public static final class string {
         public static final int action_settings=0x7f06000b;
@@ -72,7 +80,9 @@ public final class R {
         public static final int search=0x7f060005;
         public static final int search_hint=0x7f060009;
         public static final int settings_description=0x7f06000d;
+        public static final int title_activity_create=0x7f060012;
         public static final int title_activity_group=0x7f060010;
+        public static final int title_activity_join=0x7f060011;
         public static final int title_activity_painting=0x7f060008;
         public static final int title_activity_search=0x7f060006;
         public static final int title_activity_show_info=0x7f06000f;

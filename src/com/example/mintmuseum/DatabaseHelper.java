@@ -1,12 +1,12 @@
 package com.example.mintmuseum;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import android.content.ContentValues;
@@ -25,10 +25,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String ART_KEY_NAME = "name";
 	private static final String ART_KEY_ARTIST = "artits";
 	private static final String ART_KEY_DESCRIPTION = "description";
+	private static final String ART_KEY_TYPE = "type";
 	
 	private static final String ART_TABLE_CREATE = "CREATE TABLE " + TABLE_ART + " ("
 			+ KEY_ID + " INTEGER FINAL KEY, " + ART_KEY_NAME + " TEXT NOT NULL, " + ART_KEY_ARTIST + " TEXT NOT NULL, " +
-					ART_KEY_DESCRIPTION + " TEXT);"; 
+					ART_KEY_DESCRIPTION + " TEXT, " + ART_KEY_TYPE  +" TEXT );"; 
 	
 	
 	public DatabaseHelper(Context context) {
@@ -41,7 +42,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(ART_TABLE_CREATE);
 		
 	}
-
+	//Just for help creating mock objects
+	public DatabaseHelper makeDatabaseHelper(Context context) {
+		return new DatabaseHelper(context);
+	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -56,16 +60,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 * @param art artwork object to add
 	 * 
 	 */
-	public void addArtwork(ArtWork art) {
+	public boolean addArtwork(ArtWork art) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues cv = new ContentValues();
 		
 		cv.put(ART_KEY_NAME, art.getName());
 		cv.put(ART_KEY_ARTIST, art.getArtist());
 		cv.put(ART_KEY_DESCRIPTION, art.getDescription());
+		//cv.put(ART_KEY_TYPE, art.getType());
 		
 		db.insert(TABLE_ART, null, cv);
 		db.close();
+		return true;
 	}
 	
 	/**
@@ -83,10 +89,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		if ( cursor != null) cursor.moveToFirst();
 		while(cursor.moveToNext()) {
 			Log.d("getArtwork", cursor.getString(1));
-			artwork.add(new ArtWork(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3)));
+			artwork.add(new ArtWork(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), "test"));
 		}
 		return artwork;
 	}
+
 	
 	/**
 	 * Gets a list of all art in database
@@ -120,9 +127,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 * @throws ParserConfigurationException
 	 * @throws SAXException
 	 */
-	public void updateDb(String url) throws IOException, ParserConfigurationException, SAXException {
-		WebParser wp = new WebParser();
-		List<ArtWork> ls = wp.getArt();
+	public void updateDb(String url, File file) throws IOException, ParserConfigurationException, SAXException {
+		WebParser wp = new WebParser(file);
+		List<ArtWork> ls = ((WebParser) wp).getArt();
 		for (ArtWork art : ls) {
 			addArtwork(art);
 		}
