@@ -45,7 +45,7 @@ public class SearchActivity extends Activity implements OnQueryTextListener, OnC
 		//Stuff for developing
 	
 		dbHelper = new DatabaseHelper(this);
-		dbHelper.addArtwork(new ArtWork("test", "test", "DaVinci", "A Cool painting", "painting"));
+		//dbHelper.addArtwork(new ArtWork("test", "test", "DaVinci", "A Cool painting", "painting"));
 		/*try {
 			//dbHelper.updateDb("test", files);
 		} catch (IOException e) {
